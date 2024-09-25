@@ -12,9 +12,9 @@ namespace Domain.Models
         public string Name { get; set; }
         [MaxLength(160)]
         public string Description { get; set; }
-        [MaxLength(12)]
+        [MaxLength(30)]
         public ExerciseType ExerciseType { get; set; }
-        [MaxLength(100)]
-        public List<MuscleGroup> MuscleGroups { get; set; }
+        [MaxLength(12)]
+        public MuscleGroup MuscleGroup { get; set; }
     }
 }

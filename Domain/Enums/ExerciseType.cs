@@ -4,6 +4,8 @@
     {
         UpperBody,
         LowerBody,
-        FullBody
+        FullBody,
+        UpperBodyIsolation,
+        LowerBodyIsolation
     }
 }

@@ -2,15 +2,17 @@
 {
     public enum MuscleGroup
     {
-        Biceps,
-        Triceps,
         Abs,
-        Chest,
-        Glutes,
-        Thighs,
-        Hamstrings,
-        Forearms,
         Back,
-        Calves
+        Biceps,
+        Calves,
+        Chest,
+        Forearms,
+        FullBody,
+        Glutes,
+        Hamstrings,
+        Shoulders,
+        Thighs,
+        Triceps
     }
 }

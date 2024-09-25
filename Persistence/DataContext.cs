@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Domain;
 using Domain.Models;
+using Domain.Enums;
 namespace Persistence
 {
     public class DataContext : DbContext
@@ -15,6 +16,10 @@ namespace Persistence
         {
             modelBuilder.Entity<Exercise>()
                 .Property(e => e.ExerciseType)
+                .HasConversion<string>();
+
+            modelBuilder.Entity<Exercise>()
+                .Property(e => e.MuscleGroup)
                 .HasConversion<string>();
         }
     }
