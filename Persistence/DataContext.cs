@@ -10,5 +10,12 @@ namespace Persistence
         }
 
         public DbSet<Exercise> Exercises { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Exercise>()
+                .Property(e => e.ExerciseType)
+                .HasConversion<string>();
+        }
     }
 }
