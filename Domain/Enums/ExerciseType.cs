@@ -6,6 +6,8 @@
         LowerBody,
         FullBody,
         UpperBodyIsolation,
-        LowerBodyIsolation
+        LowerBodyIsolation,
+        Aerobic,
+        Anarobic
     }
 }

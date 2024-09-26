@@ -11,6 +11,8 @@ namespace Persistence
         }
 
         public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserExercise> UserExercises { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +23,16 @@ namespace Persistence
             modelBuilder.Entity<Exercise>()
                 .Property(e => e.MuscleGroup)
                 .HasConversion<string>();
+
+            modelBuilder.Entity<UserExercise>()
+               .HasOne(ue => ue.Exercise)  // Navigation property
+               .WithMany()  // Exercise can be associated with many UserExercises
+               .HasForeignKey(ue => ue.ExerciseId);
+
+            modelBuilder.Entity<UserExercise>()
+                .HasOne(ue => ue.User)
+                .WithMany() // User can be associated with many UserExercises
+                .HasForeignKey(ue => ue.UserId);
         }
     }
 }
