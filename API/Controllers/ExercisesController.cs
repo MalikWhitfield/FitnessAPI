@@ -24,19 +24,19 @@ namespace API.Controllers
             return await Mediator.Send(new ExerciseList.Query());
         }
 
-        // GET: api/Exercises/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Exercise>> GetExercise(Guid id)
-        //{
-        //    var exercise = await _context.Exercises.FindAsync(id);
+        //GET: api/Exercises/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Exercise>> GetExercise(Guid id)
+        {
+            var exercise = await Mediator.Send(new ExerciseDetails.Query { Id = id });
 
-        //    if (exercise == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (exercise == null)
+            {
+                return NotFound();
+            }
 
-        //    return exercise;
-        //}
+            return exercise;
+        }
 
         //// PUT: api/Exercises/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
