@@ -21,5 +21,6 @@ namespace Persistence.Repositories
         {
             return await _dataContext.Exercises.FirstOrDefaultAsync(e => e.Id == id);
         }
+
     }
 }
