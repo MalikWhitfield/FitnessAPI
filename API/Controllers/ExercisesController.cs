@@ -14,7 +14,7 @@ namespace API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class ExercisesController : ControllerBase
+    public class ExercisesController : BaseAPIController
     {
         private readonly IMediator _mediator;
         public ExercisesController(IMediator mediator)

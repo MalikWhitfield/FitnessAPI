@@ -1,0 +1,12 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace API.Controllers
+{
+    [ApiController]
+    [Route("/api/v1/[controller]")]
+    public class BaseAPIController : ControllerBase
+    {
+        private IMediator mediator;
+    }
+}
