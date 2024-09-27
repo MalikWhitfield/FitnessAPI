@@ -17,12 +17,21 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Exercise>()
+              .Property(u => u.Id)
+              .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Exercise>()
                 .Property(e => e.ExerciseType)
                 .HasConversion<string>();
 
             modelBuilder.Entity<Exercise>()
                 .Property(e => e.MuscleGroup)
                 .HasConversion<string>();
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.Id)
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("NEWID()");
 
             modelBuilder.Entity<UserExercise>()
                .HasOne(ue => ue.Exercise)  // Navigation property
@@ -33,6 +42,10 @@ namespace Persistence
                 .HasOne(ue => ue.User)
                 .WithMany() // User can be associated with many UserExercises
                 .HasForeignKey(ue => ue.UserId);
+
+            modelBuilder.Entity<UserExercise>()
+                .Property(u => u.Id)
+                .ValueGeneratedOnAdd();
         }
     }
 }

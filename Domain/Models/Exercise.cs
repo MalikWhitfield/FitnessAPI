@@ -6,7 +6,8 @@ namespace Domain.Models
     public class Exercise
     {
         // Get and Set is for Entity Framework to be able to get and set the properties
-        public Guid Id { get; set; }
+        // Went with int ID here because I wanted it to be human readable
+        public int Id { get; set; }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }

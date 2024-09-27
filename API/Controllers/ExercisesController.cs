@@ -69,13 +69,15 @@ namespace API.Controllers
         //    return NoContent();
         //}
 
-        //// POST: api/Exercises
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // POST: api/Exercises
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[HttpPost]
         //public async Task<ActionResult<Exercise>> PostExercise(Exercise exercise)
         //{
-        //    _context.Exercises.Add(exercise);
-        //    await _context.SaveChangesAsync();
+        //    try
+        //    {
+        //        Mediator.Send(new CreateExercise.Command
+        //    }
 
         //    return CreatedAtAction("GetExercise", new { id = exercise.Id }, exercise);
         //}

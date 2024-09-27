@@ -61,6 +61,7 @@ try
 }
 catch (Exception ex)
 {
+    Console.WriteLine(ex.ToString());
     //var logger = services.GetRequiredService<ILogger>();
     //logger.LogError(ex, "An error occured during migration");
 }

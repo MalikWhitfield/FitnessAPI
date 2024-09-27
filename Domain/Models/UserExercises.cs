@@ -5,9 +5,9 @@ namespace Domain.Models
 {
     public class UserExercise
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public Guid ExerciseId { get; set; }
+        public int ExerciseId { get; set; }
         [Required]
         public Guid UserId { get; set; }
         public int MaxWeight { get; set; }

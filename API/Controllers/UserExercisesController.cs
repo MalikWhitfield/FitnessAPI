@@ -30,7 +30,7 @@ namespace API.Controllers
 
         // GET: api/UserExcercises/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Exercise>> GetExercise(Guid id)
+        public async Task<ActionResult<Exercise>> GetExercise(string id)
         {
             var exercise = await _context.Exercises.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace API.Controllers
         // PUT: api/UserExcercises/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutExercise(Guid id, Exercise exercise)
+        public async Task<IActionResult> PutExercise(int id, Exercise exercise)
         {
             if (id != exercise.Id)
             {
@@ -86,7 +86,7 @@ namespace API.Controllers
 
         // DELETE: api/UserExcercises/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteExercise(Guid id)
+        public async Task<IActionResult> DeleteExercise(string id)
         {
             var exercise = await _context.Exercises.FindAsync(id);
             if (exercise == null)
@@ -100,7 +100,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        private bool ExerciseExists(Guid id)
+        private bool ExerciseExists(int id)
         {
             return _context.Exercises.Any(e => e.Id == id);
         }
