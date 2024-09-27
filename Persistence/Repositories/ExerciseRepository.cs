@@ -1,10 +1,9 @@
-﻿
-using Domain.Models;
+﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Repositories
 {
-    public class ExerciseRepository
+    public class ExerciseRepository : IExerciseRepository
     {
         private readonly DataContext _dataContext;
 
@@ -18,9 +17,9 @@ namespace Persistence.Repositories
             return await _dataContext.Exercises.ToListAsync();
         }
 
-        //public async Task<List<Exercise>> GetExerciseById(string id)
-        //{
-        //    return await _dataContext.Exercises.FirstOrDefaultAsync(e => e.Id == id);
-        //}
+        public async Task<Exercise> GetExerciseById(int id)
+        {
+            return await _dataContext.Exercises.FirstOrDefaultAsync(e => e.Id == id);
+        }
     }
 }

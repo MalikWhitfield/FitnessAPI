@@ -21,14 +21,14 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Exercise>>> GetExercises()
         {
-            return await Mediator.Send(new ExerciseList.Query());
+            return await ExerciseRepository.GetExercises();
         }
 
         //GET: api/Exercises/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Exercise>> GetExercise(Guid id)
+        public async Task<ActionResult<Exercise>> GetExercise(int id)
         {
-            var exercise = await Mediator.Send(new ExerciseDetails.Query { Id = id });
+            var exercise = await ExerciseRepository.GetExerciseById(id);
 
             if (exercise == null)
             {
