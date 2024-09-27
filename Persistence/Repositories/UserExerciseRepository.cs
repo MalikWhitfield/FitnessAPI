@@ -25,7 +25,7 @@ namespace Persistence.Repositories
 
         public async Task CreateUserExercise(UserExercise userExercise)
         {
-            await _context.AddAsync(userExercise);
+            await _context.UserExercises.AddAsync(userExercise);
             await _context.SaveChangesAsync();
         }
     }

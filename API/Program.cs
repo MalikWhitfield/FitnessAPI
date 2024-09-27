@@ -36,6 +36,7 @@ builder.Services.AddCors(opt =>
 
 builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddScoped<IUserExerciseRepository, UserExerciseRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
