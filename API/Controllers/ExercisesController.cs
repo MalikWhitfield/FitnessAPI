@@ -16,17 +16,12 @@ namespace API.Controllers
     [ApiController]
     public class ExercisesController : BaseAPIController
     {
-        private readonly IMediator _mediator;
-        public ExercisesController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
 
         // GET: api/Exercises
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Exercise>>> GetExercises()
         {
-            return await _mediator.Send(new ExerciseList.Query());
+            return await Mediator.Send(new ExerciseList.Query());
         }
 
         // GET: api/Exercises/5
