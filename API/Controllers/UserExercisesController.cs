@@ -41,11 +41,18 @@ namespace API.Controllers
         // POST: api/UserExcercises
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Exercise>> CreateUserExercise(UserExercise exercise)
+        public async Task<ActionResult> CreateUserExercise([FromBody] UserExercise exercise)
         {
-            await _repository.CreateUserExercise(exercise);
+            try
+            {
+                await _repository.CreateUserExercise(exercise);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
-            return CreatedAtAction("GetExercise", new { id = exercise.Id }, exercise);
+            return CreatedAtAction("CreateUserExercise", new { id = exercise.Id }, exercise);
         }
 
         // PUT: api/UserExcercises/5
