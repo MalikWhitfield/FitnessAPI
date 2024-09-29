@@ -28,5 +28,20 @@ namespace Persistence.Repositories
             await _context.UserExercises.AddAsync(userExercise);
             await _context.SaveChangesAsync();
         }
+        public async Task<UserExercise> UpdateUserExercise(UserExercise userExercise)
+        {
+            _context.Entry(userExercise).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            await _context.SaveChangesAsync();
+
+            return userExercise;
+        }
     }
 }

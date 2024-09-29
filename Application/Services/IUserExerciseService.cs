@@ -1,10 +1,12 @@
 ﻿using Domain.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace Persistence.Repositories
+namespace Application.Services
 {
-    public interface IUserExerciseRepository
+    public interface IUserExerciseService
     {
-        Task<List<UserExercise>> GetUserExercises();
+        Task<List<UserExercise>> GetAllUserExercises();
         Task<UserExercise> GetUserExerciseById(int id);
         Task CreateUserExercise(UserExercise userExercise);
         Task<UserExercise> UpdateUserExercise(UserExercise userExercise);
