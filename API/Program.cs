@@ -1,4 +1,5 @@
 using Application.Exercises;
+using Application.Services;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.Repositories;
@@ -34,6 +35,10 @@ builder.Services.AddCors(opt =>
     });
 });
 
+
+builder.Services.AddScoped<IExerciseService, ExerciseService>();
+builder.Services.AddScoped<IUserExerciseService, UserExerciseService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
 builder.Services.AddScoped<IUserExerciseRepository, UserExerciseRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

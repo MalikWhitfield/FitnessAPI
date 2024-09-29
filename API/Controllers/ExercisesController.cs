@@ -9,26 +9,32 @@ using Domain.Models;
 using Persistence;
 using MediatR;
 using Application.Exercises;
+using Application.Services;
 
 namespace API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class ExercisesController : BaseAPIController
+    public class ExercisesController : ControllerBase
     {
+        private IExerciseService _exerciseService;
+        public ExercisesController(IExerciseService exerciseService)
+        {
+            _exerciseService = exerciseService;
+        }
 
         // GET: api/Exercises
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Exercise>>> GetExercises()
         {
-            return await ExerciseRepository.GetExercises();
+            return await _exerciseService.GetAllExercises();
         }
 
         //GET: api/Exercises/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Exercise>> GetExercise(int id)
         {
-            var exercise = await ExerciseRepository.GetExerciseById(id);
+            var exercise = await _exerciseService.GetExerciseById(id);
 
             if (exercise == null)
             {
