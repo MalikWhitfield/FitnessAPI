@@ -9,5 +9,6 @@ namespace Persistence.Repositories
         Task<List<User>> GetUsers();
         Task<User> GetUserById(Guid id);
         Task CreateUser(User user);
+        Task UpdateUser(User user);
     }
 }
