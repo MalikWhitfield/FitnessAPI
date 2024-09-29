@@ -57,34 +57,13 @@ namespace API.Controllers
 
         // PUT: api/UserExcercises/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutExercise(int id, Exercise exercise)
-        //{
-        //    if (id != exercise.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateExercise(UserExercise exercise)
+        {
+            var result = await _repository.UpdateUserExercise(exercise);
 
-        //    _context.Entry(exercise).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ExerciseExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+            return Ok(result);
+        }
 
 
         // DELETE: api/UserExcercises/5
