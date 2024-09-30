@@ -1,4 +1,6 @@
-﻿using Domain.Models;
+﻿using AutoMapper;
+using Domain.DTOs;
+using Domain.Models;
 using Persistence.Repositories;
 
 namespace Application.Services
@@ -6,15 +8,19 @@ namespace Application.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<UserDTO>> GetAllUsers()
         {
-            return await _userRepository.GetUsers();
+            var users = await _userRepository.GetUsers();
+
+            return _mapper.Map<List<User>, List<UserDTO>>(users);
         }
 
         public async Task<User> GetUserById(Guid id)

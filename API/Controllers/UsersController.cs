@@ -1,4 +1,6 @@
-﻿using Domain.Models;
+﻿using Application.Services;
+using Domain.DTOs;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Repositories;
 
@@ -11,15 +13,17 @@ namespace API.Controllers
     public class UsersController : BaseAPIController
     {
         private readonly IUserRepository _repository;
-        public UsersController(IUserRepository repository)
+        private readonly IUserService _service;
+        public UsersController(IUserRepository repository, IUserService userService)
         {
             _repository = repository;
+            _service = userService;
         }
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<UserDTO>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _service.GetAllUsers();
         }
 
         // GET api/<UsersController>/5
